@@ -99,10 +99,10 @@ ENV BITNAMI_APP_NAME="nginx" \
     NGINX_BASEDIR="/opt/bitnami/nginx" \
     NGINX_VOLUME="/bitnami/nginx" \
     NGINX_EXTRAS_DIR="/opt/bitnami/extra/nginx" \
-    NGINX_TEMPLATES_DIR="${NGINX_EXTRAS_DIR}/templates" \
-    NGINX_TMPDIR="${NGINX_BASEDIR}/tmp" \
-    NGINX_CONFDIR="${NGINX_BASEDIR}/conf" \
-    NGINX_LOGDIR="${NGINX_BASEDIR}/logs"
+    NGINX_TEMPLATES_DIR="/opt/bitnami/extra/nginx/templates" \
+    NGINX_TMPDIR="/opt/bitnami/nginx/tmp" \
+    NGINX_CONFDIR="/opt/bitnami/nginx/conf" \
+    NGINX_LOGDIR="/opt/bitnami/nginx/logs"
 EXPOSE 8080
 
 WORKDIR /app
