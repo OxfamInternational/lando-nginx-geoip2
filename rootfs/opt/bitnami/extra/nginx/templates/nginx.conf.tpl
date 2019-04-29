@@ -33,17 +33,21 @@ http {
     geoip2 {{NGINX_CONFDIR}}/geoip/GeoLite2-Country.mmdb {
         auto_reload 5m;
         $geoip2_metadata_country_build metadata build_epoch;
-        $geoip2_data_country_code default=US country iso_code;
-        $geoip2_data_country_name country names en;
+        $geoip2_data_country_code default=UK source=$arg_testip country iso_code;
+        $geoip2_data_country_name default=England source=$arg_testip country names en;
     }
 
     geoip2 {{NGINX_CONFDIR}}/geoip/GeoLite2-City.mmdb {
-        $geoip2_data_city_name default=London city names en;
+        $geoip2_data_city_name default=London source=$arg_testip city names en;
     }
 
+    add_header X-Country-Code      $geoip2_data_country_code;
+    add_header X-Country-Name      $geoip2_data_country_name;
+    add_header X-City-Name         $geoip2_data_city_name;
+
     fastcgi_param  COUNTRY_CODE    $geoip2_data_country_code;
-		fastcgi_param  COUNTRY_NAME    $geoip2_data_country_name;
-		fastcgi_param  CITY_NAME       $geoip2_data_city_name;
+    fastcgi_param  COUNTRY_NAME    $geoip2_data_country_name;
+    fastcgi_param  CITY_NAME       $geoip2_data_city_name;
 
     # no sendfile on OSX
     sendfile        on;
