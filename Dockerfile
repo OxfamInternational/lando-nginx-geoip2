@@ -85,6 +85,7 @@ RUN ./configure \
 RUN ln -sf /opt/bitnami/nginx/html /app
 RUN ln -sf /dev/stdout /opt/bitnami/nginx/logs/access.log
 RUN ln -sf /dev/stderr /opt/bitnami/nginx/logs/error.log
+RUN rm -f /opt/bitnami/nginx/conf/nginx.conf
 
 COPY rootfs /
 RUN /prepare.sh
