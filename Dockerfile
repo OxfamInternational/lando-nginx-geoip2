@@ -71,6 +71,7 @@ RUN ./configure \
     --with-threads \
     --with-stream \
     --with-stream_ssl_module \
+    --with-debug \
     --with-mail \
     --with-mail_ssl_module \
     --with-file-aio \
@@ -94,8 +95,14 @@ ENV BITNAMI_APP_NAME="nginx" \
     NGINX_DAEMON_USER="" \
     NGINX_HTTPS_PORT_NUMBER="443" \
     NGINX_HTTP_PORT_NUMBER="8080" \
-    PATH="/opt/bitnami/nginx/sbin:$PATH"
-
+    PATH="/opt/bitnami/nginx/sbin:$PATH" \
+    NGINX_BASEDIR="/opt/bitnami/nginx" \
+    NGINX_VOLUME="/bitnami/nginx" \
+    NGINX_EXTRAS_DIR="/opt/bitnami/extra/nginx" \
+    NGINX_TEMPLATES_DIR="${NGINX_EXTRAS_DIR}/templates" \
+    NGINX_TMPDIR="${NGINX_BASEDIR}/tmp" \
+    NGINX_CONFDIR="${NGINX_BASEDIR}/conf" \
+    NGINX_LOGDIR="${NGINX_BASEDIR}/logs"
 EXPOSE 8080
 
 WORKDIR /app
