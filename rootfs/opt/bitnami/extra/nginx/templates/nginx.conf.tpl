@@ -33,7 +33,7 @@ http {
     geoip2 {{NGINX_CONFDIR}}/geoip/GeoLite2-Country.mmdb {
         auto_reload 5m;
         $geoip2_metadata_country_build metadata build_epoch;
-        $geoip2_data_country_code default=US source=$variable_with_ip country iso_code;
+        $geoip2_data_country_code default=US country iso_code;
         $geoip2_data_country_name country names en;
     }
 
