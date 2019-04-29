@@ -30,14 +30,14 @@ http {
 
     access_log  "{{NGINX_LOGDIR}}/access.log";
 
-    geoip2 {{NGINX_CONFDIR}}/geoip/maxmind-country.mmdb {
+    geoip2 {{NGINX_CONFDIR}}/geoip/GeoLite2-Country.mmdb {
         auto_reload 5m;
         $geoip2_metadata_country_build metadata build_epoch;
         $geoip2_data_country_code default=US source=$variable_with_ip country iso_code;
         $geoip2_data_country_name country names en;
     }
 
-    geoip2 {{NGINX_CONFDIR}}/geoip/maxmind-city.mmdb {
+    geoip2 {{NGINX_CONFDIR}}/geoip/GeoLite2-City.mmdb {
         $geoip2_data_city_name default=London city names en;
     }
 
