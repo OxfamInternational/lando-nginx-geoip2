@@ -41,6 +41,10 @@ http {
         $geoip2_data_city_name default=London city names en;
     }
 
+    fastcgi_param  COUNTRY_CODE    $geoip2_data_country_code;
+		fastcgi_param  COUNTRY_NAME    $geoip2_data_country_name;
+		fastcgi_param  CITY_NAME       $geoip2_data_city_name;
+
     # no sendfile on OSX
     sendfile        on;
 
